@@ -1,8 +1,10 @@
 Este trabalho tem como objetivo o estudo e implementação da tecnologia OpenID no cenário de uma universidade, 
 toda a implementação será voltada para  o ambiente de desenvolvimento web. Para o desenvolvimento será utilizado 
-linguagem Java. O ambiente para desenvolvimento será Netbeans.
+linguagem Java. 
+Será utilizado o framework Jaguar para desenvolvimento e estruturação de todo o projeto contribuindo para uma futura 
+reutilização e organização de todo o projeto a ser desenvolvido. O ambiente para desenvolvimento será o Eclipse.
 Abaixo descrição do requisitos contemplados:
-- Para realizar a inscrição em um determinado curso o aluno deverá acessar o portal da universidade.
-- Para realizar a inscrição os alunos deverão acessar o sistema utilizando um email do google.
-- Após acesso/autenticação o aluno poderá realizar sua inscrição no curso desejado.
+- Será disponibilizado um portal para o acesso dos alunos da universidade;
+- Os alunos deverão acessar o sistema utilizando um email do google.
+- Após acesso o aluno poderá visualizar as informações referente o curso como:
 
