@@ -49,23 +49,22 @@ public class Consumer{
             List discoveries = manager.discover(GOOGLE_USER_SUPPLIED);
 
             // Tentativa de se conectar com o provedor OpenID 
-            // e acessar um endpoint service pra se autenticar
             DiscoveryInformation discovered = manager.associate(discoveries);
 
-            // ObtŽm a requisi‹o de autoriza‹o que ser‡ mandada para o provedor OpenID 
+            // Obtem a requisicaoo de autorizacao que o servidor mandada para o provedor OpenID 
             AuthRequest authReq = manager.authenticate(discovered, returnToUrl);
             
-            // Informa quais atributos dever‹o ser 'requeridos'
+            // Informa quais atributos deveraoo ser 'requeridos'
             FetchRequest fetch = mountFetchRequest(); 
             authReq.addExtension(fetch);
             
             authReq.setRealm(realm);
             
-            // coloca o objeto discovered na sess‹o do usu‡rio
+            // coloca o objeto discovered na sessao do usu‡rio
             request.getSession().setAttribute("discovered", discovered);
             request.getSession().setAttribute("checkResponse", true);
             
-            // Encaminha para a p‡gina de autentica‹o do google
+            // Encaminha para a pagina de autenticacaoo do google
             response.sendRedirect(authReq.getDestinationUrl(true));
         }
         catch (OpenIDException e){
@@ -80,7 +79,7 @@ public class Consumer{
             // extrai os parametros que vem do HTTP request do OpenID provider.
             ParameterList response = new ParameterList(httpReq.getParameterMap());
 
-            // Lembra que a gente colocou esse objeto na sess‹o?
+           
             DiscoveryInformation discovered = (DiscoveryInformation) httpReq.getSession().getAttribute("discovered");
 
             // Extrai os parametros da url
@@ -90,16 +89,16 @@ public class Consumer{
                 receivingURL.append("?").append(httpReq.getQueryString());
             }
 
-            // Valida o response, verificar se o ConsumerManager Ž o mesmo que efetuou o request
+            // Valida o response, verificar se o ConsumerManager e o mesmo que efetuou o request
             VerificationResult verification = manager.verify(receivingURL.toString(), response, discovered);
 
-            // Analisa o resultado da verifica‹o e extrai o identificador de verifica‹o
+            // Analisa o resultado da verificacaoo e extrai o identificador de verificacao
             Identifier verified = verification.getVerifiedId();
             if (verified != null){
                 AuthSuccess authSuccess = (AuthSuccess) verification.getAuthResponse();
 
                 if (authSuccess.hasExtension(AxMessage.OPENID_NS_AX)){
-                	// Extrai os atributos que fizemos a requisi‹o (no fetchRequest)
+                	// Extrai os atributos que fizemos a requisicao
                     FetchResponse fetchResp = (FetchResponse) authSuccess.getExtension(AxMessage.OPENID_NS_AX);
 
                     Map userAttributes = fetchResp.getAttributes();
