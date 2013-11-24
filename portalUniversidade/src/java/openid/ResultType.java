@@ -1,5 +1,0 @@
-package openid;
-
-public enum ResultType {
-	AUTH_SUCCESS, AUTH_FAILURE, REDIRECT_TO_OPENID_PROVIDER_FAILURE
-}
