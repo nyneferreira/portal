@@ -6,7 +6,7 @@
         <link rel='stylesheet' type='text/css' href='css/style1.css' />
     </head>
     <body>
-        <!-- Atualização teste --!>
+        <!-- Atualização teste !-->
         
         <div id="container1">
              <a href='login.jsp'>Área do aluno</a>
